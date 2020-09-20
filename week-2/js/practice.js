@@ -4,10 +4,11 @@
 //Complete the function below to find the ​max number​ of the passing array of numbers.
 //Reminder:​ you ​cannot​ use built-in Math.max() or sort() to complete this assignment.
 
-let maxNum = 0;
+
 function max(numbers) {
     // your code here, for-loop method preferred
-    for (let i = 0; i < numbers.length; i++) {
+    let maxNum= numbers[0];
+    for (let i = 1; i < numbers.length; i++) {
         if (numbers[i] > maxNum) {
             maxNum = numbers[i];
         }
@@ -17,6 +18,8 @@ function max(numbers) {
 }
 max([1, 2, 4, 5]);// result to 5
 max([5, 2, 7, 1, 6])// result to 7
+max([-1, 3, 2, 0])// result to 3
+max([-1, -13, -120, -99])// result to 3
 
 
 /*================================================
