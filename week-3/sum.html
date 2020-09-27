@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum</title>
+</head>
+
+<body>
+    <label>http://localhost:3000/getData?number=
+        <input id="queryStringNumber" type="number" placeholder="請輸入正整數">
+    </label>
+    <button onclick=reload() type="button">Submit</button>
+    <div id="result"></div>
+
+    <!-- JavaScript -->
+    <script>
+        function reload() {
+            let xhr = new XMLHttpRequest();
+            let value = document.getElementById('queryStringNumber').valueAsNumber;
+            let sum = (1 + value) * value / 2;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    if (value > 0 && value - Math.floor(value) === 0) {
+                        document.getElementById('result').innerHTML = `${xhr.responseText}<hr><h1>sum=${sum}</h1>`;
+                    } else {
+                        document.getElementById('result').innerHTML = `${xhr.responseText}`;
+                    }
+                }
+            };
+            xhr.open('GET', `http://localhost:3000/getData?number=${value}`);
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>
